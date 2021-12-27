@@ -1,0 +1,6 @@
+# Virtual environment
+miniblog/
+
+# Sqlite database
+*.sqlite3
+
