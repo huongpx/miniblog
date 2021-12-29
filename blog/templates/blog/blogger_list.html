@@ -1,0 +1,16 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h1>All Members</h1>
+  <hr>
+  {% if blogger_list %}
+    {% for blogger in blogger_list %}
+    <ul>
+      <li><a href="{{ blogger.get_absolute_url }}">{{ blogger.user }}</a></li>
+    </ul>
+    {% endfor %}
+  {% else %}
+    <p>Welcome! Looks like you are the first one visited my Website.</p>
+    <p><a href="">Sign up</a> to share your posts to others.</p>
+  {% endif %}
+{% endblock %}

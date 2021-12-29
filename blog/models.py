@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 # Create your models here.
 
@@ -14,6 +15,12 @@ class Blog(models.Model):
 
     post_time = models.DateTimeField(auto_now_add=True)
 
+    def get_absolute_url(self):
+        return reverse('blog-detail', args=str(self.id))
+
+    class Meta:
+        ordering = ['-post_time']
+
     def __str__(self):
         return self.title
 
@@ -24,6 +31,9 @@ class Blogger(models.Model):
 
     info = models.TextField(max_length=500)
 
+    def get_absolute_url(self):
+        return reverse('blogger-detail', args=str(self.id))
+    
     def __str__(self):
         return self.user.username
 
@@ -37,6 +47,9 @@ class BlogComment(models.Model):
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
 
     post_time = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['post_time']
 
     def __str__(self):
         show_length = 80

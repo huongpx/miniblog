@@ -3,7 +3,7 @@
 {% block content %}
   <h1>Mini Blog</h1>
   <hr>
-    <p>Welcome to Mini Blog, a website developed by <strong>Pham Xuan Huong</strong>.</p>
+    <p>Welcome to Mini Blog, a simple website developed by <strong>Pham Xuan Huong</strong>.</p>
     <hr>
     <h2>Using this Blog, you can:</h2>
     <ul>
@@ -14,8 +14,8 @@
     <hr>
     <h2>This website currently has:</h2>
     <ul>
-      <li>Bloggers</li>
-      <li>Blogs</li>
-      <li>Comments</li>
+      <li>{{ num_bloggers }} Blogger{{ num_bloggers|pluralize }}</li>
+      <li>{{ num_blogs }} Blog{{ num_blogs|pluralize }}</li>
+      <li>{{ num_comments }} Comment{{ num_comments|pluralize }}</li>
     </ul>
 {% endblock  %}

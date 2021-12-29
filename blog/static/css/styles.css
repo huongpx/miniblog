@@ -3,3 +3,27 @@
   margin-top: 20px;
   list-style: none;
 }
+
+.header {
+  padding: 5px;
+  text-align: left;
+  background: #060e46;
+  color: white;
+  font-size: 20px;
+  font-family: serif;
+  font-weight: bold;
+}
+
+.footer {
+  padding: 10px;
+  text-align: left;
+  background: #060e46;
+  color: white;
+  font-size: 15px;
+  font-family: serif;
+  font-weight: bold;
+}
+
+.comment {
+  margin-left: 5%;
+}
