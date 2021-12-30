@@ -10,14 +10,14 @@
   <div class="comment">
     <h3>Comments</h3>
     <hr>
-    {% for comment in post.postcomment_set %}
-      <p><a href="{{ post.author.get_absolute_url }}"></a> ({{ post.post_time }}) - {{ comment }}</p>
+    {% for comment in post.postcomment_set.all %}
+      <p><a href="{{ post.author.get_absolute_url }}">{{ post.author.user }}</a> ({{ comment.post_time }}) - {{ comment }}</p>
       <hr>
     {% endfor %}
     {% if user.is_authenticated %}
-      <p><a href="">Add a comment</a></p>
+      <p><a href="{% url 'post-comment' post.id %}">Add a comment</a></p>
     {% else %}
-      <p><a href="">Login</a> to add a comment</p>
+      <p><a href="{% url 'login' %}">Login</a> to add a comment</p>
     {% endif %}
   </div>
 {% endblock  %}

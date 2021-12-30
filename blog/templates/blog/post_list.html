@@ -8,7 +8,7 @@
       <p class="text-muted">Posted by <a href="{{ post.author.get_absolute_url }}">{{ post.author.user }}</a> at {{ post.post_time }}</p>
       <h3>{{ post.title }}</h3>
       <p class="text-muted">
-        {{ post.postcomment_set.count }} comment{{ post.postcomment_set.count|pluralize }}
+        {{ post.postcomment_set.all.count }} comment{{ post.postcomment_set.all|pluralize }}
         and likes.
       </p>
       <a href="{{ post.get_absolute_url }}">See details</a>

@@ -24,7 +24,9 @@
           {% if user.is_authenticated %}
           <li>User: {{ user.get_username }}</li>
 
-          <li><a href="">My Posts</a></li>
+          <li><a href="{% url 'post-create' %}">Post something</a></li>
+
+          <li><a href="{% url 'my-post' %}">My Posts</a></li>
 
           <li><a href="{% url 'logout' %}?next={{ request.path }}">Log Out</a></li>
           {% else %}

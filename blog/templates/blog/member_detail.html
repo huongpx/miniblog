@@ -7,9 +7,9 @@
     <p>{{ line }}</p>
   {% endfor %}
   <h4>Posts list</h4>
-  {% if member.post_set %}
+  {% if member.post_set.all %}
     <ul>
-    {% for post in member.post_set %}
+    {% for post in member.post_set.all %}
       <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a>({{ post.post_time }})</li>
     {% endfor %}
     </ul>

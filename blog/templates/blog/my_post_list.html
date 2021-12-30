@@ -1,0 +1,18 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h1>My Posts</h1>
+  <hr>
+
+  {% if post_list %}
+  <ul>
+    {% for post in post_list %}
+    <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a> - {{ post.post_time }}</li>
+    <hr>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>You haven't posted anything yet.</p>
+    <p><a href="{% url 'post-create' %}">Do it now!</a></p>
+  {% endif %}
+{% endblock %}
