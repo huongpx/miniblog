@@ -5,18 +5,18 @@ from django.urls import reverse
 
 # Create your models here.
 
-class Blog(models.Model):
+class Post(models.Model):
     """Model representing a blog"""
     title = models.CharField(max_length=100)
 
     content = models.TextField(max_length=1000)
 
-    author = models.ForeignKey('Blogger', on_delete=models.SET_NULL, null=True)
+    author = models.ForeignKey('Member', on_delete=models.SET_NULL, null=True)
 
     post_time = models.DateTimeField(auto_now_add=True)
 
     def get_absolute_url(self):
-        return reverse('blog-detail', args=str(self.id))
+        return reverse('post-detail', args=str(self.id))
 
     class Meta:
         ordering = ['-post_time']
@@ -25,26 +25,26 @@ class Blog(models.Model):
         return self.title
 
 
-class Blogger(models.Model):
+class Member(models.Model):
     """Model representing a blog's author"""
     user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True)
 
     info = models.TextField(max_length=500)
 
     def get_absolute_url(self):
-        return reverse('blogger-detail', args=str(self.id))
+        return reverse('member-detail', args=str(self.id))
     
     def __str__(self):
         return self.user.username
 
 
-class BlogComment(models.Model):
+class PostComment(models.Model):
     """Model representing a comment in a blog"""
     content = models.TextField(max_length=500)
 
-    author = models.ForeignKey(Blogger, on_delete=models.SET_NULL, null=True)
+    author = models.ForeignKey(Member, on_delete=models.SET_NULL, null=True)
 
-    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
+    blog = models.ForeignKey(Post, on_delete=models.CASCADE)
 
     post_time = models.DateTimeField(auto_now_add=True)
 

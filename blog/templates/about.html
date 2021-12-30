@@ -7,15 +7,16 @@
     <hr>
     <h2>Using this Blog, you can:</h2>
     <ul>
-      <li>Read other bloggers' blogs.</li>
-      <li>After logged in, you can post your own blogs.</li>
-      <li>You can also like, write comment(s) on a blog.</li>
+      <li><a href="{% url 'posts' %}">Read other members' posts.</a></li>
+      <li><a href="{% url 'members' %}">See all members.</a></li>
+      <li>After logged in, you can write your own post.</li>
+      <li>You can also like, write comment(s) on a post.</li>
     </ul>
     <hr>
     <h2>This website currently has:</h2>
     <ul>
-      <li>{{ num_bloggers }} Blogger{{ num_bloggers|pluralize }}</li>
-      <li>{{ num_blogs }} Blog{{ num_blogs|pluralize }}</li>
+      <li>{{ num_members }} Member{{ num_members|pluralize }}</li>
+      <li>{{ num_posts }} Post{{ num_posts|pluralize }}</li>
       <li>{{ num_comments }} Comment{{ num_comments|pluralize }}</li>
     </ul>
 {% endblock  %}

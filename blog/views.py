@@ -1,41 +1,41 @@
 from django.shortcuts import render
-from .models import Blog, Blogger, BlogComment
+from .models import Post, Member, PostComment
 from django.views import generic
 
 # Create your views here.
 
 def about(request):
     """View function for index page"""
-    num_blogs = Blog.objects.count()
+    num_posts = Post.objects.count()
     
-    num_bloggers = Blogger.objects.count()
+    num_members = Member.objects.count()
 
-    num_comments = BlogComment.objects.count()
+    num_comments = PostComment.objects.count()
 
     context = {
-        'num_blogs': num_blogs,
-        'num_bloggers': num_bloggers,
+        'num_posts': num_posts,
+        'num_members' : num_members,
         'num_comments': num_comments,
     }
 
     return render(request, 'about.html', context=context)
 
 
-class BloggerListView(generic.ListView):
+class MemberListView(generic.ListView):
     """Class base view for blogger list"""
-    model = Blogger
+    model = Member
     paginate_by = 5
 
 
-class BloggerDetailView(generic.DetailView):
-    model = Blogger
+class MemberDetailView(generic.DetailView):
+    model = Member
 
 
-class BlogListView(generic.ListView):
+class PostListView(generic.ListView):
     """Class base view for blog list"""
-    model = Blog
+    model = Post
     paginate_by = 5
 
 
-class BlogDetailView(generic.DetailView):
-    model = Blog
+class PostDetailView(generic.DetailView):
+    model = Post

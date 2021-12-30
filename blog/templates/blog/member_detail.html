@@ -1,16 +1,16 @@
 {% extends 'base_generic.html' %}
 
 {% block content %}
-  <h3>Member: {{ blogger.user }}</h3>
+  <h3>Member: {{ member.user }}</h3>
   <h4>Infomation</h4>
-  {% for line in blogger.info.splitlines %}
+  {% for line in member.info.splitlines %}
     <p>{{ line }}</p>
   {% endfor %}
   <h4>Posts list</h4>
-  {% if blogger_list %}
+  {% if member.post_set %}
     <ul>
-    {% for blog in blogger.blog_set %}
-      <li><a href="blog.title"></a>({{ blog.post_time }})</li>
+    {% for post in member.post_set %}
+      <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a>({{ post.post_time }})</li>
     {% endfor %}
     </ul>
   {% else %}

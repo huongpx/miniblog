@@ -1,17 +1,17 @@
 {% extends 'base_generic.html' %}
 
 {% block content %}
-  <h2>{{ blog.title }}</h2>
-    <p><a href="{{ blog.author.get_absolute_url }}">{{ blog.author.user }}</a> posted at {{ blog.post_time }}</p>
+  <h2>{{ post.title }}</h2>
+    <p><a href="{{ post.author.get_absolute_url }}">{{ post.author.user }}</a> posted at {{ post.post_time }}</p>
     <hr>
-    {% for line in blog.content.splitlines %}
+    {% for line in post.content.splitlines %}
       <p>{{ line }}</p>
     {% endfor %}
   <div class="comment">
     <h3>Comments</h3>
     <hr>
-    {% for comment in blog.blogcomment_set %}
-      <p><a href="{{ blog.author.get_absolute_url }}"></a> ({{ blog.post_time }}) - {{ comment }}</p>
+    {% for comment in post.postcomment_set %}
+      <p><a href="{{ post.author.get_absolute_url }}"></a> ({{ post.post_time }}) - {{ comment }}</p>
       <hr>
     {% endfor %}
     {% if user.is_authenticated %}

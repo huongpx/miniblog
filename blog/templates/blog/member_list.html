@@ -1,0 +1,18 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h1>All Members</h1>
+  <hr>
+  {% if member_list %}
+    {% for member in member_list %}
+    <ul>
+      <li><a href="{{ member.get_absolute_url }}">{{ member.user }}</a></li>
+    </ul>
+    {% endfor %}
+  {% else %}
+    <p>Welcome! Looks like you are the first one visited my Website.</p>
+    {% if not user.is_authenticated %}
+      <p><a href="">Sign up</a> to share your posts to others.</p>
+    {% endif %}
+  {% endif %}
+{% endblock %}
