@@ -35,16 +35,37 @@
           <li>Don't have an account?</li>
           <li><a href="{% url 'signup' %}">Sign Up</a></li>
           {% endif %}
+          <br>
+          <hr>
+          <li><strong>About Pham Huong</strong></li>
+          <li><i>Email: </i>huong.px01@gmail.com</li>
+          <li><i>Facebook: </i><a href="https://www.facebook.com/huong.phamx">fb.com/huong.phamx</a></li>
+          <li><i>Github: </i><a href="https://www.github.com/huongpx">github.com/huongpx</a></li>
+          <li><i>LinkedIn: </i><a href="https://www.linkedin.com/in/huongpx/">linkedin.com/in/huongpx/</a></li>
         </ul>
       </div>
       <div class="col-sm-10">
         <br>
         {% block content %}{% endblock  %}
+        {% block pagination %}
+    {% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+  {% endblock %}
       </div>
     </div>
-  </div>
-  <div class="footer">
-    <p>CONTACT PHAM HUONG</p>
   </div>
 </body>
 </html>

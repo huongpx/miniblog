@@ -29,19 +29,6 @@ body::after {
   font-weight: bold;
 }
 
-.footer {
-  padding: 10px;
-  text-align: left;
-  background: #060e46;
-  color: white;
-  font-size: 15px;
-  font-family: serif;
-  font-weight: bold;
-  position: absolute;
-  height: 50px;
-  width: 100%;
-}
-
 .comment {
   margin-left: 5%;
 }

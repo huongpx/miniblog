@@ -2,7 +2,7 @@
 
 {% block content %}
   <h2>{{ post.title }}</h2>
-    <p><a href="{{ post.author.get_absolute_url }}">{{ post.author.user }}</a> posted at {{ post.post_time }}</p>
+    <p>{{ post.author }} posted at {{ post.post_time }}</p>
     <hr>
     {% for line in post.content.splitlines %}
       <p>{{ line }}</p>
@@ -11,7 +11,7 @@
     <h3>Comments</h3>
     <hr>
     {% for comment in post.postcomment_set.all %}
-      <p><a href="{{ post.author.get_absolute_url }}">{{ post.author.user }}</a> ({{ comment.post_time }}) - {{ comment }}</p>
+      <p>{{ post.author }} ({{ comment.post_time }}) - {{ comment }}</p>
       <hr>
     {% endfor %}
     {% if user.is_authenticated %}

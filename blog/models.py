@@ -12,7 +12,7 @@ class Post(models.Model):
 
     content = models.TextField(max_length=1000)
 
-    author = models.ForeignKey('Member', on_delete=models.SET_NULL, null=True)
+    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 
     post_time = models.DateTimeField(auto_now_add=True)
 
