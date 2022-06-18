@@ -1,0 +1,24 @@
+version: '3.7'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: miniblog/miniblog-app:latest
+    depends_on:
+      - db
+    restart: always
+    ports:
+      - 8000:8000
+    env_file:
+      - ./docker-compose.env
+    volumes:
+      - ./src:/opt/app/python
+
+  db:
+    image: postgres:14.3
+    container_name: miniblog-db
+    restart: always
+    env_file:
+      - ./docker-compose.env

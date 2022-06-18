@@ -4,39 +4,37 @@ from django.urls import reverse
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-# Create your models here.
 
 class Post(models.Model):
     """Model representing a blog"""
+    
     title = models.CharField(max_length=100)
-
     content = models.TextField(max_length=1000)
-
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-
     post_time = models.DateTimeField(auto_now_add=True)
-
-    def get_absolute_url(self):
-        return reverse('post-detail', args=str(self.id))
 
     class Meta:
         ordering = ['-post_time']
-
+    
     def __str__(self):
         return self.title
+    
+    def get_absolute_url(self):
+        return reverse('post-detail', args=str(self.id))
+
 
 class Member(models.Model):
     """Model representing a blog's author"""
+    
     user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True)
-
     info = models.TextField(max_length=500)
+
+    def __str__(self):
+        return self.user.username
 
     def get_absolute_url(self):
         return reverse('member-detail', args=str(self.id))
     
-    def __str__(self):
-        return self.user.username
-
 
 @receiver(post_save, sender=User) 
 def update_user_profile(sender, instance, created, **kwargs):
@@ -47,17 +45,14 @@ def update_user_profile(sender, instance, created, **kwargs):
 
 class PostComment(models.Model):
     """Model representing a comment in a blog"""
+    
     content = models.TextField(max_length=500)
-
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
-
     post_time = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ['post_time']
-
 
     def __str__(self):
         show_length = 80
